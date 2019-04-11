@@ -16,18 +16,18 @@ parm.addRule('name', function (e, v) {
 // 路由校验列表
 const ruleList = {
   // 验证码
-  _yun_verification_code: {
+  _yun1_verification_code: {
     size: {type: 'string', required: false},
     w: {type: 'string', required: false},
     h: {type: 'string', required: false},
   },
   // 注册
-  _yun_login_register: {
+  _yun1_login_register: {
     password: {type: 'string'},
     user: {type: 'string'},
   },
   // 登录
-  _yun_login_login: {
+  _yun1_login_login: {
     code: {type: 'string'},
     key: {type: 'string'},
     password: {type: 'string'},
