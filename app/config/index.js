@@ -5,7 +5,7 @@ const env = require(`../../config/.env.${process.env.ENV}.js`)
 
 const config = {
   mode: process.env.MODE, // development || production
-  port: 3001, // 端口
+  port: 3000, // 端口
   tokenObs: 'yun-serve', // token混淆码
   verificationObs: 'yun-serve', // 验证码混淆码
   verificationSta: true, // 启用验证码
