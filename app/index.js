@@ -1,4 +1,3 @@
-require('babel-polyfill');
 const Koa = require('koa');
 const app = new Koa();
 const views = require('koa-views');
@@ -9,7 +8,7 @@ const logger = require('koa-logger');
 const cors = require('koa2-cors');
 const colors = require('colors');
 const {resolve} = require('path');
-const swagger = require('swagger-injector');
+const { koaSwagger } = require('koa2-swagger-ui')
 const mysql = require('mysql2');
 
 const conf = require('./config');
@@ -133,9 +132,14 @@ app.use(async (ctx, next) => {
 });
 
 // swagger
-app.use(swagger.koa({
-  path: resolve(__dirname, './public', 'swagger.json'),
-}));
+app.use(
+  koaSwagger({
+    routePrefix: '/yun1/swagger', // host at /swagger instead of default /docs
+    swaggerOptions: {
+      url: '/yun1/api/swagger.json' // example path to json 其实就是之后swagger-jsdoc生成的文档地址
+    }
+  })
+)
 
 // error 业务逻辑错误
 app.use((ctx, next) => {

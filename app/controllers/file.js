@@ -1,5 +1,6 @@
-const rp = require('request-promise');
+const request = require('request');
 const fs = require('fs');
+const conf = require('../config')
 
 const url = async (ctx, next) => {
   ctx.DATA.message = '禁止操作';
@@ -33,15 +34,11 @@ const add = async (ctx, next) => {
  */
 const list = async (ctx, next) => {
   const name = ctx.query.name;
-  let options = {
-    url: 'http://0.0.0.0:3005/core/oss/list',
+  ctx.DATA = await request({
+    url: `${conf.api_url.API_CORE}/core/oss/list`,
     method: 'GET',
-    qs: {name: name}
-  };
-  let dat = await rp(options);
-  let res = JSON.parse(dat);
-  delete res.data.res;
-  ctx.DATA = res;
+    qs: {name}
+  });
   ctx.body = ctx.DATA;
 };
 
@@ -49,9 +46,9 @@ const list = async (ctx, next) => {
  * 单张图片上传
  */
 const upload = async (ctx, next) => {
-  const file = ctx.request.files.file;
-  let options = {
-    url: 'http://0.0.0.0:3005/core/oss/upload',
+  const file = ctx.request.files.file
+  ctx.DATA = await request({
+    url: `${conf.api_url.API_CORE}/core/oss/upload`,
     method: 'POST',
     formData: {
       file: [
@@ -68,16 +65,12 @@ const upload = async (ctx, next) => {
             filename: file.name,
             contentType: file.mimeType
           }
-        },
+        }
       ]
     }
-  };
-  let dat = await rp(options);
-  let res = JSON.parse(dat);
-  delete res.data.res;
-  ctx.DATA = res;
-  ctx.body = ctx.DATA;
-};
+  })
+  ctx.body = ctx.DATA
+}
 
 module.exports = {
   url,
