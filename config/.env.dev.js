@@ -3,7 +3,7 @@
 module.exports = {
   env: 'dev',
   api_url: {
-    API_CORE: 'https://api.bstu.cn'
+    API_CORE: 'http://core:3000'
   },
   db: {
     database: 'db',
