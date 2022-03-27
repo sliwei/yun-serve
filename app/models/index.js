@@ -1,8 +1,8 @@
-const {sequelize, Sequelize} = require('../utils/sequelize');
+const { sequelize, Sequelize } = require('../utils/sequelize')
 
-const bstu_user = require('./bstu_user');
+const bstu_user = require('./bstu_user')
 
-const BstuUser = bstu_user(sequelize, Sequelize);
+const BstuUser = bstu_user(sequelize, Sequelize)
 
 /**
  * Associations - 关联
@@ -15,5 +15,5 @@ const BstuUser = bstu_user(sequelize, Sequelize);
 module.exports = {
   BstuUser,
   sequelize,
-  Sequelize,
-};
+  Sequelize
+}
