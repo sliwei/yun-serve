@@ -1,5 +1,7 @@
 # yun-serve
 
+[![deploy](https://github.com/sliwei/yun-serve/actions/workflows/action.yaml/badge.svg)](https://github.com/sliwei/yun-serve/actions/workflows/action.yaml)
+
 > 云盘服务中心
 
 ## Dev Setup

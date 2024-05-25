@@ -1,14 +1,15 @@
-version: '3.7'
-
 services:
   yun-serve:
+    restart: always
     container_name: yun-serve
-    image: yun-serve
+    image: registry.cn-shenzhen.aliyuncs.com/sliwei/yun-serve:${TAG}
     environment:
-      - DATABASE=db
-      - USERNAME=user
-      - PASSWORD=password
-      - HOST=locashot
+      - ENV=live
+      - MODE=production
+      - DATABASE=bdm296810572_db
+      - USERNAME=admin
+      - PASSWORD=lw555wam.
+      - HOST=bstu.cn
       - PORT=3306
     networks:
       - proxy
