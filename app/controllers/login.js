@@ -65,16 +65,16 @@ const login = async (ctx, next) => {
  * @param code 验证码
  */
 const register = async (ctx, next) => {
-  let dat = ctx.request.body
-  let news = await BstuUser.create({
-    name: dat.name,
-    user: dat.user,
-    password: dat.password
-  })
-  if (!news) {
-    ctx.DATA.code = 0
-    ctx.DATA.message = '注册失败'
-  }
+  // let dat = ctx.request.body
+  // let news = await BstuUser.create({
+  //   name: dat.name,
+  //   user: dat.user,
+  //   password: dat.password
+  // })
+  // if (!news) {
+  ctx.DATA.code = 0
+  ctx.DATA.message = '关闭注册'
+  // }
   ctx.body = ctx.DATA
 }
 
